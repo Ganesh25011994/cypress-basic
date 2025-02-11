@@ -1,0 +1,48 @@
+.grid-container {
+    display: flex;
+    // flex-wrap: wrap; /* Allow the columns to wrap */
+    gap: 16px; /* Gap between columns */
+    width: 100%;
+  }
+  
+  .grid-item {
+    flex: 1 1 100%; /* Default to full width (100%) */;
+    padding: 16px;
+    width: 25%;
+  }
+  
+  .box {
+    // background-color: lightblue;
+    padding: 20px;
+    text-align: center;
+    // border: 1px solid #ddd;
+    height: 100px; /* You can adjust the height as needed */
+  }
+
+  .x {
+    height: 40px;
+    width: 40px;
+  }
+  
+  /* Media queries to adjust layout on different screen sizes */
+  @media (min-width: 600px) {
+    .grid-item {
+      flex: 1 1 48%; /* 2 columns on medium screens */
+    }
+  }
+  
+  @media (min-width: 900px) {
+    .grid-item {
+      flex: 1 1 23%; /* 4 columns on larger screens */
+    }
+  }
+
+  .btnHeadMpin {
+    text-align: center;
+  }
+  .btn {
+    width: 60%;
+    height: 30px;
+    background: #61459e;
+    color: #FFFFFF;
+  }

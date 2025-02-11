@@ -1,0 +1,48 @@
+.inputBoxArea {
+    position: relative;
+    margin-top: 10px;
+}
+
+select {
+    // width: 50px;
+    border: 0.5px solid lightgrey;
+    width: 98%;
+    height: 25px;
+    margin-top: 5px;
+    border-radius: 5px;
+}
+
+input {
+    border: 0.5px solid lightgrey;
+    width: 98%;
+    height: 25px;
+    margin-top: 5px;
+    border-radius: 5px;
+  }
+
+  
+.btnHead {
+    text-align: center;
+}
+
+.btn {
+width: 60%;
+height: 30px;
+background: #61459e;
+color: #FFFFFF;
+}
+
+.yearsmonthsdiv {
+    display: flex; 
+    flex-direction: row; 
+    width: 100%; 
+    margin-top: 10px;
+}
+
+.yearsdiv {
+    width: 50%;
+}
+
+.monthsdiv {
+    width: 50%;
+}

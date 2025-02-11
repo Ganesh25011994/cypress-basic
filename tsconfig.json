@@ -3,11 +3,14 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "baseUrl": "./",
     "outDir": "./dist/out-tsc",
-    "strict": true,
+    "strict": false,
+    "strictPropertyInitialization": false,
+    "types": ["cypress", "node"],
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
-    "noImplicitReturns": true,
+    "noImplicitReturns": false,
     "noFallthroughCasesInSwitch": true,
     "skipLibCheck": true,
     "isolatedModules": true,
@@ -24,6 +27,11 @@
       "dom"
     ]
   },
+  "include": [
+    "cypress/**/*.ts", // Ensure this includes your Cypress files
+    "globals.d.ts",
+    "cypress/support/index.js"
+  ],
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,

@@ -1,0 +1,22 @@
+{
+    "userloginReqData": [
+        {
+            "username": "John",
+            "lastName": "Doe",
+            "email": "john.doe@example.com",
+            "password": "laps"
+        },
+        {
+            "username": "SAIGANESH",
+            "lastName": "Doe",
+            "email": "jane.doe@example.com",
+            "password": "anotherstrongpassword"
+        },
+        {
+            "username": "SAIGANESH",
+            "lastName": "Doe",
+            "email": "jane.doe@example.com",
+            "password": "laps"
+        }
+    ]
+}

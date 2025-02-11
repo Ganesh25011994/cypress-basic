@@ -1,0 +1,63 @@
+<app-loader [isLoading]="loading"></app-loader>
+<div *ngIf="!loading">
+  <div class="loginDiv">
+    <h2>Welcome Back</h2>
+    
+    <form [formGroup]="loginFormDetails" (ngSubmit)="loginFormDetailsSave()">
+      <div>
+        <label>Enter your username</label>
+        <input id="username" [(ngModel)]="username" formControlName="username" type="text" />
+        <div>
+          <app-validation-error-messages
+            [formData]="{'formName': loginFormDetails, 'fieldName': 'username','validation_messages': validation_messages['username'] }">
+          </app-validation-error-messages>
+        </div>
+      </div>
+  
+      <div>
+        <label>Enter your password</label>
+        <input id="password" [(ngModel)]="password" formControlName="password" type="password" />
+        <div>
+          <app-validation-error-messages
+            [formData]="{'formName': loginFormDetails, 'fieldName': 'password','validation_messages': validation_messages['password'] }">
+          </app-validation-error-messages>
+        </div>
+      </div>
+
+      <div style="text-align: center;">
+        <button class="btnstyl" id="login-button" type="submit">Submit</button>
+      </div>
+    </form>
+    
+  </div>
+    <!-- <label>Welcome to our test project</label>
+  </div> -->
+<!-- 
+  <form [formGroup]="loginFormDetails">
+    <div>
+      <label>Username</label>
+      <input id="username" [(ngModel)]="username" formControlName="username" type="text" />
+      <div>
+        <app-validation-error-messages
+          [formData]="{'formName': loginFormDetails, 'fieldName': 'username','validation_messages': validation_messages['username'] }">
+        </app-validation-error-messages>
+      </div>
+    </div>
+    
+    <div>
+      <label>Username</label>
+      <input id="username" [(ngModel)]="username" formControlName="username" type="text" />
+      <div>
+        <app-validation-error-messages
+          [formData]="{'formName': loginFormDetails, 'fieldName': 'username','validation_messages': validation_messages['username'] }">
+        </app-validation-error-messages>
+      </div>
+    </div>
+  
+    
+    <div>
+      <button style="background-color: red; width: 250px;" id="login-button" (click)="goahead()">Login</button>
+    </div>
+  </form> -->
+
+</div>

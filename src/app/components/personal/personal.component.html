@@ -1,0 +1,482 @@
+<app-loader [isLoading]="loading"></app-loader>
+<div *ngIf="!loading">
+  <h2>Customer Details</h2>
+    <form [formGroup]="personalDetails"
+        (ngSubmit)="personalDetailsSave()">
+
+        <div>
+          <label>Sourcing Channel</label>
+          <select formControlName="sourcingChannel" id="sourcingChannel">
+              <option *ngFor="let title of sourcingChannelList" [value]="title.CODE">{{title.NAME}}</option>
+          </select>
+          <div>
+            <app-validation-error-messages
+              [formData]="{'formName': personalDetails, 'fieldName': 'sourcingChannel','validation_messages': validation_messages['sourcingChannel'] }">
+            </app-validation-error-messages>
+          </div>
+        </div>
+
+        <div class="inputBoxArea">
+          <label>Branch Name</label>
+          <input id="branchName" type="text" formControlName="branchName">
+          <div>
+              <app-validation-error-messages
+              [formData]="{'formName': personalDetails, 'fieldName': 'branchName','validation_messages': validation_messages['branchName'] }">
+              </app-validation-error-messages>
+          </div>
+        </div>
+
+        <div class="inputBoxArea">
+          <label>Branch Code</label>
+          <input id="branchCode" type="text" formControlName="branchCode">
+          <div>
+              <app-validation-error-messages
+              [formData]="{'formName': personalDetails, 'fieldName': 'branchCode','validation_messages': validation_messages['branchCode'] }">
+              </app-validation-error-messages>
+          </div>
+        </div>
+
+        <div class="inputBoxArea">
+          <label>LG Name</label>
+          <input id="lgName" type="text" formControlName="lgName">
+          <div>
+              <app-validation-error-messages
+              [formData]="{'formName': personalDetails, 'fieldName': 'lgName','validation_messages': validation_messages['lgName'] }">
+              </app-validation-error-messages>
+          </div>
+        </div>
+
+        <div class="inputBoxArea">
+          <label>LG ID</label>
+          <input id="lgId" type="text" formControlName="lgId">
+          <div>
+              <app-validation-error-messages
+              [formData]="{'formName': personalDetails, 'fieldName': 'lgId','validation_messages': validation_messages['lgId'] }">
+              </app-validation-error-messages>
+          </div>
+        </div>
+
+        <div>
+            <label>Select Your Title</label>
+            <select formControlName="title" id="title">
+                <option *ngFor="let title of titleList" [value]="title.CODE">{{title.NAME}}</option>
+            </select>
+            <div>
+              <app-validation-error-messages
+                [formData]="{'formName': personalDetails, 'fieldName': 'title','validation_messages': validation_messages['title'] }">
+              </app-validation-error-messages>
+            </div>
+        </div>
+
+
+        <div class="inputBoxArea">
+            <label>Enter Your FirstName:</label>
+            <input id="firstName" type="text" formControlName="firstName">
+            <div>
+                <app-validation-error-messages
+                [formData]="{'formName': personalDetails, 'fieldName': 'firstName','validation_messages': validation_messages['firstName'] }">
+                </app-validation-error-messages>
+            </div>
+        </div>
+
+        <div class="inputBoxArea">
+            <label>Enter Your MiddleName:</label>
+            <input id="middleName" type="text" formControlName="middleName">
+            <div>
+                <app-validation-error-messages
+                [formData]="{'formName': personalDetails, 'fieldName': 'middleName','validation_messages': validation_messages['middleName'] }">
+                </app-validation-error-messages>
+            </div>
+        </div>
+
+        <div class="inputBoxArea">
+            <label>Enter Your LastName:</label>
+            <input id="lastName" type="text" formControlName="lastName">
+            <div>
+                <app-validation-error-messages
+                [formData]="{'formName': personalDetails, 'fieldName': 'lastName','validation_messages': validation_messages['lastName'] }">
+                </app-validation-error-messages>
+            </div>
+        </div>
+
+        <div class="inputBoxArea">
+            <label>Enter Your FatherName:</label>
+            <input id="fatherName" type="text" formControlName="fatherName">
+            <div>
+                <app-validation-error-messages
+                [formData]="{'formName': personalDetails, 'fieldName': 'fatherName','validation_messages': validation_messages['fatherName'] }">
+                </app-validation-error-messages>
+            </div>
+        </div>
+
+        <div class="inputBoxArea">
+            <label>Enter Your MotherName:</label>
+            <input id="motherName" type="text" formControlName="motherName">
+            <div>
+                <app-validation-error-messages
+                [formData]="{'formName': personalDetails, 'fieldName': 'motherName','validation_messages': validation_messages['motherName'] }">
+                </app-validation-error-messages>
+            </div>
+        </div>
+
+        <div class="inputBoxArea">
+            <label>Marital Status</label>
+            <select id="maritalStatus" formControlName="maritalStatus">
+                <option *ngFor="let list of maritalStatusList" [value]="list.CODE">{{list.NAME}}</option>
+            </select>
+            <div>
+              <app-validation-error-messages
+                [formData]="{'formName': personalDetails, 'fieldName': 'maritalStatus','validation_messages': validation_messages['maritalStatus'] }">
+              </app-validation-error-messages>
+            </div>
+        </div>
+
+        <div class="inputBoxArea">
+            <label>Gender</label>
+            <select id="gender" formControlName="gender">
+                <option *ngFor="let list of genderList" [value]="list.CODE">{{list.NAME}}</option>
+            </select>
+            <div>
+              <app-validation-error-messages
+                [formData]="{'formName': personalDetails, 'fieldName': 'gender','validation_messages': validation_messages['gender'] }">
+              </app-validation-error-messages>
+            </div>
+        </div>
+
+        <div class="inputBoxArea">
+            <label>Enter Your DOB</label>
+            <input id="dob" type="date" formControlName="dob">
+            <div>
+                <app-validation-error-messages
+                [formData]="{'formName': personalDetails, 'fieldName': 'dob','validation_messages': validation_messages['dob'] }">
+                </app-validation-error-messages>
+            </div>
+        </div>
+
+        <div class="inputBoxArea">
+            <label>Enter Your Mobile Number:</label>
+            <input id="mobileNo" type="number" formControlName="mobileNo">
+            <div>
+                <app-validation-error-messages
+                [formData]="{'formName': personalDetails, 'fieldName': 'mobileNo','validation_messages': validation_messages['mobileNo'] }">
+                </app-validation-error-messages>
+            </div>
+        </div>
+
+        <div class="inputBoxArea">
+          <label>Enter Your Aletername Mobile Number:</label>
+          <input id="alternateMobileNo" type="number" formControlName="alternateMobileNo">
+          <div>
+              <app-validation-error-messages
+              [formData]="{'formName': personalDetails, 'fieldName': 'alternateMobileNo','validation_messages': validation_messages['alternateMobileNo'] }">
+              </app-validation-error-messages>
+          </div>
+        </div>
+
+        <div class="inputBoxArea">
+            <label>Enter Your Email ID:</label>
+            <input id="emailId" type="text" formControlName="emailId">
+            <div>
+                <app-validation-error-messages
+                [formData]="{'formName': personalDetails, 'fieldName': 'emailId','validation_messages': validation_messages['emailId'] }">
+                </app-validation-error-messages>
+            </div>
+        </div>
+
+        <div class="inputBoxArea">
+            <label>Lead ID:</label>
+            <input id="leadId" type="text" formControlName="leadId">
+            <div>
+                <app-validation-error-messages
+                [formData]="{'formName': personalDetails, 'fieldName': 'leadId','validation_messages': validation_messages['leadId'] }">
+                </app-validation-error-messages>
+            </div>
+        </div>
+
+        <div class="inputBoxArea">
+            <label>Distance From Branch:</label>
+            <input id="distanceFromBranch" type="text" formControlName="distanceFromBranch">
+            <div>
+                <app-validation-error-messages
+                [formData]="{'formName': personalDetails, 'fieldName': 'distanceFromBranch','validation_messages': validation_messages['distanceFromBranch'] }">
+                </app-validation-error-messages>
+            </div>
+        </div>
+
+        <div class="inputBoxArea">
+            <label>Monthly Income</label>
+            <input id="monthlyIncome" type="number" formControlName="monthlyIncome">
+            <div>
+                <app-validation-error-messages
+                [formData]="{'formName': personalDetails, 'fieldName': 'monthlyIncome','validation_messages': validation_messages['monthlyIncome'] }">
+                </app-validation-error-messages>
+            </div>
+        </div>
+
+        <div class="inputBoxArea">
+            <label>Loan Amount Requested</label>
+            <input id="loanRequested" type="number" formControlName="loanRequested">
+            <div>
+                <app-validation-error-messages
+                [formData]="{'formName': personalDetails, 'fieldName': 'loanRequested','validation_messages': validation_messages['loanRequested'] }">
+                </app-validation-error-messages>
+            </div>
+        </div>
+
+        <div class="inputBoxArea">
+            <label>Scheme Requested</label>
+            <select id="schemeRequested" formControlName="schemeRequested">
+                <option *ngFor="let title of titleList" [value]="title.CODE">{{title.NAME}}</option>
+            </select>
+            <div>
+              <app-validation-error-messages
+                [formData]="{'formName': personalDetails, 'fieldName': 'schemeRequested','validation_messages': validation_messages['schemeRequested'] }">
+              </app-validation-error-messages>
+            </div>
+          </div>
+
+          <div class="inputBoxArea">
+            <label>Differently Abled</label>
+            <select id="differentlyAbled" formControlName="differentlyAbled">
+                <option *ngFor="let list of yesnoList" [value]="list.CODE">{{list.NAME}}</option>
+            </select>
+            <div>
+              <app-validation-error-messages
+                [formData]="{'formName': personalDetails, 'fieldName': 'differentlyAbled','validation_messages': validation_messages['differentlyAbled'] }">
+              </app-validation-error-messages>
+            </div>
+          </div>
+
+          <div class="inputBoxArea">
+            <label>Religion</label>
+            <select id="religion" formControlName="religion">
+                <option *ngFor="let list of religionList" [value]="list.CODE">{{list.NAME}}</option>
+            </select>
+            <div>
+              <app-validation-error-messages
+                [formData]="{'formName': personalDetails, 'fieldName': 'religion','validation_messages': validation_messages['religion'] }">
+              </app-validation-error-messages>
+            </div>
+          </div>
+
+          <div class="inputBoxArea">
+            <label>Category</label>
+            <select id="category" formControlName="category">
+                <option *ngFor="let list of categoryList" [value]="list.CODE">{{list.NAME}}</option>
+            </select>
+            <div>
+              <app-validation-error-messages
+                [formData]="{'formName': personalDetails, 'fieldName': 'category','validation_messages': validation_messages['category'] }">
+              </app-validation-error-messages>
+            </div>
+          </div>
+
+          <div class="inputBoxArea">
+            <label>Politically Exposed Person</label>
+            <select id="politicallyExposedPerson" formControlName="politicallyExposedPerson">
+                <option *ngFor="let list of yesnoList" [value]="list.CODE">{{list.NAME}}</option>
+            </select>
+            <div>
+              <app-validation-error-messages
+                [formData]="{'formName': personalDetails, 'fieldName': 'politicallyExposedPerson','validation_messages': validation_messages['politicallyExposedPerson'] }">
+              </app-validation-error-messages>
+            </div>
+          </div>
+
+          <div class="inputBoxArea">
+            <label>Qualification</label>
+            <select id="qualification" formControlName="qualification">
+                <option *ngFor="let list of qualificationList" [value]="list.CODE">{{list.NAME}}</option>
+            </select>
+            <div>
+              <app-validation-error-messages
+                [formData]="{'formName': personalDetails, 'fieldName': 'qualification','validation_messages': validation_messages['qualification'] }">
+              </app-validation-error-messages>
+            </div>
+          </div>
+
+          <div>
+            <label>Occupation Main Category</label>
+            <select id="occupationMainCategory" formControlName="occupationMainCategory">
+              <option *ngFor="let list of occupationMainList" [value]="list.CODE">{{list.NAME}}</option>
+            </select>
+            <div>
+              <app-validation-error-messages
+                [formData]="{'formName': personalDetails, 'fieldName': 'occupationMainCategory','validation_messages': validation_messages['occupationMainCategory'] }">
+              </app-validation-error-messages>
+            </div>
+          </div>
+
+          <div>
+            <label>Occupation Sub Category</label>
+            <select id="occupationSubcategory" formControlName="occupationSubcategory">
+              <option *ngFor="let list of occupationsubList" [value]="list.CODE">{{list.NAME}}</option>
+            </select>
+            <div>
+              <app-validation-error-messages
+                [formData]="{'formName': personalDetails, 'fieldName': 'occupationSubcategory','validation_messages': validation_messages['occupationSubcategory'] }">
+              </app-validation-error-messages>
+            </div>
+          </div>
+
+          <div>
+            <label>Occupation</label>
+            <select id="occupation" formControlName="occupation">
+              <option *ngFor="let list of occupation" [value]="list.CODE">{{list.NAME}}</option>
+            </select>
+            <div>
+              <app-validation-error-messages
+                [formData]="{'formName': personalDetails, 'fieldName': 'occupation','validation_messages': validation_messages['occupation'] }">
+              </app-validation-error-messages>
+            </div>
+          </div>
+
+          <div>
+            <label>Total Working Years and Months</label>
+            <div class="yearsmonthsdiv">
+              <div class="yearsdiv">
+                <div>
+                  <select id="totalWorkExperienceYear" formControlName="totalWorkExperienceYear">
+                    <option *ngFor="let list of yearsList" [value]="list.CODE">{{list.NAME}}</option>
+                  </select>
+                  <label style="margin-left: 10px;">Years</label>
+                </div>
+                  <div>
+                    <app-validation-error-messages
+                      [formData]="{'formName': personalDetails, 'fieldName': 'totalWorkExperienceYear','validation_messages': validation_messages['totalWorkExperienceYear'] }">
+                    </app-validation-error-messages>
+                  </div>
+              </div>
+  
+              <div class="monthsdiv">
+                <div>
+                  <select id="totalWorkExperienceMonth" formControlName="totalWorkExperienceMonth">
+                    <option *ngFor="let list of monthsList" [value]="list.CODE">{{list.NAME}}</option>
+                  </select>
+                  <label style="margin-left: 10px;">Months</label>
+                </div>
+                  
+                <div>
+                  <app-validation-error-messages
+                    [formData]="{'formName': personalDetails, 'fieldName': 'totalWorkExperienceMonth','validation_messages': validation_messages['totalWorkExperienceMonth'] }">
+                  </app-validation-error-messages>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div>
+            <label>Current Working Years and Months</label>
+            <div class="yearsmonthsdiv">
+              <div class="yearsdiv">
+                <div> 
+                  <select id="currentWorkExperienceYear" formControlName="currentWorkExperienceYear">
+                    <option *ngFor="let list of yearsList" [value]="list.CODE">{{list.NAME}}</option>
+                  </select>
+                  <label style="margin-left: 10px;">Years</label>
+                </div>
+                <div>
+                  <app-validation-error-messages
+                    [formData]="{'formName': personalDetails, 'fieldName': 'currentWorkExperienceYear','validation_messages': validation_messages['currentWorkExperienceYear'] }">
+                  </app-validation-error-messages>
+                </div>
+              </div>
+  
+              <div class="monthsdiv">
+                <div>
+                  <select id="currentWorkExperienceMonth" formControlName="currentWorkExperienceMonth">
+                    <option *ngFor="let list of monthsList" [value]="list.CODE">{{list.NAME}}</option>
+                  </select>
+                  <label style="margin-left: 10px;">Months</label>
+                </div>
+                  
+                  <div>
+                    <app-validation-error-messages
+                      [formData]="{'formName': personalDetails, 'fieldName': 'currentWorkExperienceMonth','validation_messages': validation_messages['currentWorkExperienceMonth'] }">
+                    </app-validation-error-messages>
+                  </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="inputBoxArea">
+            <label>Personal Expense</label>
+            <input id="personalExpense" type="number" formControlName="personalExpense">
+            <div>
+                <app-validation-error-messages
+                [formData]="{'formName': personalDetails, 'fieldName': 'personalExpense','validation_messages': validation_messages['personalExpense'] }">
+                </app-validation-error-messages>
+            </div>
+        </div>
+
+        <div>
+          <label>Total Number of Years stay in City</label>
+          <div class="yearsmonthsdiv">
+            <div class="yearsdiv">
+              <div>
+                <select id="totalnoOfYear" formControlName="totalnoOfYear">
+                  <option *ngFor="let list of yearsList" [value]="list.CODE">{{list.NAME}}</option>
+                </select>
+                <label style="margin-left: 10px;">Years</label>
+              </div>
+              <div>
+                <app-validation-error-messages
+                  [formData]="{'formName': personalDetails, 'fieldName': 'totalnoOfYear','validation_messages': validation_messages['totalnoOfYear'] }">
+                </app-validation-error-messages>
+              </div>
+            </div>
+
+            <div class="monthsdiv">
+              <div>
+                <select id="totalnoOfMonth" formControlName="totalnoOfMonth">
+                  <option *ngFor="let list of monthsList" [value]="list.CODE">{{list.NAME}}</option>
+                </select>
+                <label style="margin-left: 10px;">Months</label>
+              </div>
+                
+              <div>
+                <app-validation-error-messages
+                  [formData]="{'formName': personalDetails, 'fieldName': 'totalnoOfMonth','validation_messages': validation_messages['totalnoOfMonth'] }">
+                </app-validation-error-messages>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="inputBoxArea">
+          <label>CIF ID</label>
+          <input id="cifId" type="number" formControlName="cifId">
+          <div>
+              <app-validation-error-messages
+              [formData]="{'formName': personalDetails, 'fieldName': 'cifId','validation_messages': validation_messages['cifId'] }">
+              </app-validation-error-messages>
+          </div>
+      </div>
+
+      <div>
+        <label>Form 60</label>
+        <select id="occupation" formControlName="panAvail">
+          <option *ngFor="let list of yesnoList" [value]="list.CODE">{{list.NAME}}</option>
+        </select>
+        <div>
+          <app-validation-error-messages
+            [formData]="{'formName': personalDetails, 'fieldName': 'panAvail','validation_messages': validation_messages['panAvail'] }">
+          </app-validation-error-messages>
+        </div>
+      </div>
+      <!-- 
+
+      occupationMainCategory: ['', Validators.required],
+      occupationSubcategory: ['', Validators.required],
+      occupation: ['', Validators.required],
+-->
+
+      <div class="btnHead">
+        <button class="btn" type="submit" id="save-button">Save</button>
+      </div>
+
+    </form>
+    
+</div>
