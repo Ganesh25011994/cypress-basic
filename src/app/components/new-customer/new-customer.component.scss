@@ -1,0 +1,39 @@
+.content {
+    height: 80%;
+    margin-top: 20%;
+    position: relative;
+}
+
+.inputBoxArea {
+    position: relative;
+    margin-top: 10px;
+}
+
+select {
+    // width: 50px;
+    border: 0.5px solid lightgrey;
+    width: 98%;
+    height: 25px;
+    margin-top: 5px;
+    border-radius: 5px;
+}
+
+input {
+    border: 0.5px solid lightgrey;
+    width: 98%;
+    height: 25px;
+    margin-top: 5px;
+    border-radius: 5px;
+}
+
+  
+.btnHead {
+    text-align: center;
+}
+
+.btn {
+    width: 60%;
+    height: 30px;
+    background: #61459e;
+    color: #FFFFFF;
+}

@@ -41,8 +41,6 @@ describe('Intercept with Http service and get Login Response', () => {
   
       cy.get("#username").type(username, { delay: 100})
       cy.get("#password").type(password, { delay: 100})
-      
-      cy.contains('Login').click()
   
       // let AuthToken = await generateToken()
       
@@ -137,7 +135,7 @@ describe('Intercept with Http service and get Login Response', () => {
       const deviceID = '0a5eb22847dec0de'
       cy.get("#username").type(username, { delay: 100})
       cy.get("#password").type(password, { delay: 100})
-      cy.contains('Submit').click();
+      // cy.contains('Submit').click();
   
         //Toekn Generate
       let timestamp = new Date().getTime();

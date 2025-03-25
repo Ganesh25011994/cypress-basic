@@ -1,0 +1,58 @@
+<!-- <ion-header #header>
+    <ion-toolbar class="ion-text-center">
+      <ion-buttons slot="start">
+        <ion-menu-button autoHide="true"></ion-menu-button>
+      </ion-buttons>
+      <ion-title>Existing Leads</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <div #scroll style="position: relative">
+    <ion-searchbar
+      debounce="1000"
+      color="light"
+      placeholder="Search"
+      (ionInput)="handleInput($event)"
+    >
+    </ion-searchbar>
+  </div>
+  
+  <ion-content #content [fullscreen]="true">
+    <ion-refresher
+      slot="fixed"
+      [pullMin]="200"
+      (ionRefresh)="getExistingMobLeads($event)"
+    >
+      <ion-refresher-content
+        pullingIcon="chevron-down-circle-outline"
+        pullingText="Pull to refresh"
+        refreshingSpinner="circles"
+        refreshingText="Refreshing..."
+      >
+      </ion-refresher-content>
+    </ion-refresher>
+    <app-common-existing-leads
+      [showSkelt]="showSkelt"
+      [pageType]="pageType"
+      [existingLeads]="existingLeads"
+      [organisationMaster]="organisationMaster"
+      (scrollEvent)="onContentScroll($event)"
+    ></app-common-existing-leads>
+  </ion-content>
+   -->
+
+<div>
+    <app-header></app-header>
+    <div>
+      <input matInput type="search" placeholder="Search" (input)="handleInput($event)">
+      <button matSuffix mat-icon-button aria-label="Search">
+        <mat-icon>search</mat-icon>
+      </button>
+    </div>
+</div>
+
+<div>
+    <app-common-existing-leads
+    [existingLeads]="existingLeads"
+    [organisationMaster]="organisationMaster"
+    ></app-common-existing-leads>
+</div>

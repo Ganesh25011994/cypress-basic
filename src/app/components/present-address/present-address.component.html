@@ -1,0 +1,147 @@
+<div class="content">
+  <div style="text-align: center;">
+    <h2 class="title">Present Address</h2>
+  </div>
+
+  <div>
+    <form [formGroup]="presentAddressDetails" (ngSubmit)="savePresentAddress(presentAddressDetails.value)">
+      <div class="row g-6">
+        <div class="col-md-6">
+          <div class="form-floating">
+            <select class="form-select" id="sameasPermanentAddress" formControlName="sameasPermanentAddress">
+                <option *ngFor="let value of yesNoList" [value]="value.CODE">{{value.NAME}}</option>
+            </select>
+            <label for="sameasPermanentAddress">Same As Permanent Address</label>
+          </div>
+          <div class="text-danger small mt-1">
+            <app-validation-error-messages
+              [formData]="{'formName': presentAddressDetails, 'fieldName': 'sameasPermanentAddress','validation_messages': validation_messages['sameasPermanentAddress'] }">
+            </app-validation-error-messages>
+          </div>
+        </div>
+        
+        <div  class="col-md-6">
+          <div class="form-floating">
+            <select class="form-select" id="documentCollectedForPresentAddress" formControlName="documentCollectedForPresentAddress">
+                <option *ngFor="let value of kycDocsListpresent" [value]="value.CODE">{{value.NAME}}</option>
+            </select>
+            <label for="documentCollectedForPresentAddress">Document collected for Permanent Address</label>
+          </div>
+          <div class="text-danger small mt-1">
+            <app-validation-error-messages
+              [formData]="{'formName': presentAddressDetails, 'fieldName': 'documentCollectedForPresentAddress','validation_messages': validation_messages['documentCollectedForPresentAddress'] }">
+            </app-validation-error-messages>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-floating">
+            <input class="form-control" id="preAddress1" type="text" formControlName="preAddress1">
+            <label for="preAddress1">Address 1</label>
+          </div>
+          <div class="text-danger small mt-1">
+            <app-validation-error-messages
+              [formData]="{'formName': presentAddressDetails, 'fieldName': 'preAddress1','validation_messages': validation_messages['preAddress1'] }">
+            </app-validation-error-messages>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-floating">
+            <input class="form-control" id="preAddress2" type="text" formControlName="preAddress2">
+            <label for="preAddress2">Address 2</label>
+          </div>
+          <div class="text-danger small mt-1">
+            <app-validation-error-messages
+              [formData]="{'formName': presentAddressDetails, 'fieldName': 'preAddress2','validation_messages': validation_messages['preAddress2'] }">
+            </app-validation-error-messages>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-floating">
+            <input class="form-control" id="preAddress3" type="text" formControlName="preAddress3">
+            <label for="preAddress3">Address 3</label>
+          </div>
+          <div class="text-danger small mt-1">
+            <app-validation-error-messages
+              [formData]="{'formName': presentAddressDetails, 'fieldName': 'preAddress3','validation_messages': validation_messages['preAddress3'] }">
+            </app-validation-error-messages>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="input-group">
+            <div class="form-floating">
+              <input 
+              id="prePincode" 
+              type="text" 
+              class="form-control" 
+              maxlength="6" 
+              formControlName="prePincode" 
+              placeholder="Enter Pincode">
+              <label for="prePincode" class="form-label">Pincode</label>
+            </div>
+            <button 
+              class="btn btn-primary d-flex align-items-center" 
+              *ngIf="!presentPincodeVerify" 
+              (click)="verifyPresentPincode()">
+              <mat-icon class="me-1">search</mat-icon>
+            </button>
+          </div>
+          <div class="text-danger small mt-1">
+            <app-validation-error-messages
+              [formData]="{'formName': presentAddressDetails, 'fieldName': 'prePincode', 'validation_messages': validation_messages['prePincode'] }">
+            </app-validation-error-messages>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-floating">
+            <select class="form-select" id="preState" formControlName="preState">
+              <option *ngFor="let value of presentstates" [value]="value.stateCode">{{value.stateName}}</option>
+            </select>
+            <label for="preState">State</label>
+          </div>
+          <div class="text-danger small mt-1">
+            <app-validation-error-messages
+              [formData]="{'formName': presentAddressDetails, 'fieldName': 'preState','validation_messages': validation_messages['preState'] }">
+            </app-validation-error-messages>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-floating">
+            <select class="form-select" id="preCity" formControlName="preCity">
+              <option *ngFor="let value of presentcityList" [value]="value.cityCode">{{value.cityName}}</option>
+            </select>
+            <label for="preCity">City</label>
+          </div>
+          <div class="text-danger small mt-1">
+            <app-validation-error-messages
+              [formData]="{'formName': presentAddressDetails, 'fieldName': 'preCity','validation_messages': validation_messages['preCity'] }">
+            </app-validation-error-messages>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-floating">
+            <input class="form-control" id="preLandMark" type="text" formControlName="preLandMark">
+            <label for="preLandMark">LandMark</label>
+          </div>
+          <div class="text-danger small mt-1">
+            <app-validation-error-messages
+              [formData]="{'formName': presentAddressDetails, 'fieldName': 'preLandMark','validation_messages': validation_messages['preLandMark'] }">
+            </app-validation-error-messages>
+          </div>
+        </div>
+
+        <div class="col-12 text-center mt-3">
+          <button type="submit" class="btn btn-primary w-50" [disabled]="presentAddressDetails.invalid">
+            Submit
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

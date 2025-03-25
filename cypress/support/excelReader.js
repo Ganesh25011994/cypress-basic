@@ -29,15 +29,15 @@ export const readExcelFile = async (file) => {
   //     resolve(data);
   //   }
   // } catch (error) {
-  //   reject(error)
+  //   console.log("onFileChange-error", error)
   // }
 
   try {
     console.log("document picked")
-    const file = file;
+    const files = file;
     const reader = new FileReader();
 
-    reader.onload = (file) => {
+    reader.onload = (files) => {
       const binaryStr = e.target.result;
       const workbook = XLSX.read(binaryStr, { type: 'binary' });
       const sheetName = workbook.SheetNames[0]; // Get the first sheet
@@ -49,8 +49,8 @@ export const readExcelFile = async (file) => {
       console.log("exceldata", this.specificColumnData); 
     };
 
-    if (file) {
-      reader.readAsBinaryString(file);
+    if (files) {
+      reader.readAsBinaryString(files);
     }
   } catch (error) {
     console.log("onFileChange-error", error)

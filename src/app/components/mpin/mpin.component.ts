@@ -164,11 +164,11 @@ export class MpinComponent {
         // this.global.presentLoading("Fetching pin status...");
         this.loading = true
         this.username = localStorage.getItem('username')
-        if (!this.username) {
-          if ((typeof window !== undefined &&  window.Cypress)) {
-            this.username = 'GLRO'
-          }
-        }
+        // if (!this.username) {
+        //   if ((typeof window !== undefined &&  window.Cypress)) {
+        //     this.username = 'GLRO'
+        //   }
+        // }
         console.log("getMpinStatus-this.username", this.username)
         let request = {
           "userId": this.username,
@@ -261,11 +261,11 @@ export class MpinComponent {
         console.log("pinLogin")
         // let loggedInUser = await this.sqliteService.getLoginDetails(localStorage.getItem('username'));
         let loginResponse: any = localStorage.getItem('loginResponse')
-        if (!loginResponse) {
-          if ((typeof window !== undefined &&  window.Cypress)) {
-            loginResponse = '{"StatusCode":"000","UserName":"GOLD RO","Status":"Success","Orgscode":"469","LPuserID":"GLRO","UserGroups":["1556700"],"token":"U2FsdGVkX1/4WNXs5iI0H0jLvM756WdLFQfPmgAj6/beId8eYRrP00Sj6/uMIXZ+","orgLocationList":["10281","10271"]}'
-          }
-        }
+        // if (!loginResponse) {
+        //   if ((typeof window !== undefined &&  window.Cypress)) {
+        //     loginResponse = '{"StatusCode":"000","UserName":"GOLD RO","Status":"Success","Orgscode":"469","LPuserID":"GLRO","UserGroups":["1556700"],"token":"U2FsdGVkX1/4WNXs5iI0H0jLvM756WdLFQfPmgAj6/beId8eYRrP00Sj6/uMIXZ+","orgLocationList":["10281","10271"]}'
+        //   }
+        // }
         let loggedInUser = JSON.parse(loginResponse)
         // if (typeof window !== undefined &&  window.Cypress) {
         //   if (loggedInUser.length == 0) 
@@ -343,7 +343,7 @@ export class MpinComponent {
           } else if (+this.mPin === +Object.values(this.mPinDigits).join('')) {
             // this.login({ username: loggedInUser[0].user_name, password: loggedInUser[0].password });
             this.fetchingMasters()
-            await this.sqliteService.updateLastLoginStatus({ lastLoginDate: format(new Date(), "MM/dd/yyyy"), seq_id: loggedInUser[0].seq_id });
+            // await this.sqliteService.updateLastLoginStatus({ lastLoginDate: format(new Date(), "MM/dd/yyyy"), seq_id: loggedInUser[0].seq_id });
           } else {
             this.mPinDigits.first = ""
             this.mPinDigits.second = ""
@@ -415,36 +415,45 @@ export class MpinComponent {
 async fetchingMasters() {
   try {
     let commonMaster;
+    let versionInfo = [
+      {
+        "version": "0"
+      }
+    ]
     // this.global.presentLoading(this.alertErrorLabel.AlertLabels.fetchMasters);
-    let versionInfo = await this.sqliteService.getAllRecordsWithoutIds('MASTER_UPDATE_VERSION');
+    // let versionInfo = await this.sqliteService.getAllRecordsWithoutIds('MASTER_UPDATE_VERSION');
     let masterRequest = {
       "Setupmastval": {
         "setupfinal": versionInfo.length > 0 && versionInfo[0].version ? versionInfo[0].version : '0',
         "setupversion": versionInfo.length > 0 && versionInfo[0].version ? versionInfo[0].version : '0',
-        "setupmodule":"VL"
+        "setupmodule":"GL"
       },
       "token": this.global.genToken()
     };
     this.masterResponse = await this.rest.angularHttpService('Setupresp', masterRequest);
     if (this.masterResponse.errorCode === '000') {
       this.masterUpdateVersion = this.masterResponse.version;
+
       if (versionInfo.length > 1 && (versionInfo[0].version === this.masterResponse.version)) {
         // this.global.dismissLoading();
         this.navigateToDashboard();
       } else {
-        let masterKeys = Object.keys(this.masterResponse.Setupmaster);
-        await this.sqliteService.deleteStaticMasters('COMMON_MASTER_DATA');
-        for (let i = 0; i < masterKeys.length; i++) {
-          if (Array.isArray(this.masterResponse.Setupmaster[masterKeys[i]])) {
-            commonMaster = this.masterResponse.Setupmaster[masterKeys[i]].filter(data => data.hasOwnProperty('optionValue'))
-            if (commonMaster.length > 0) {
-              await this.sqliteService.insertAllMasterData(this.masterResponse.Setupmaster[masterKeys[i]], masterKeys[i]);
-            }
-          }
-          if (i == masterKeys.length - 1) {
-            this.navigateToDashboard();
-          }
-        }
+        localStorage.setItem("MasterResponse", JSON.stringify(this.masterResponse))
+        this.navigateToDashboard();
+
+        // let masterKeys = Object.keys(this.masterResponse.Setupmaster);
+        // await this.sqliteService.deleteStaticMasters('COMMON_MASTER_DATA');
+        // for (let i = 0; i < masterKeys.length; i++) {
+        //   if (Array.isArray(this.masterResponse.Setupmaster[masterKeys[i]])) {
+        //     commonMaster = this.masterResponse.Setupmaster[masterKeys[i]].filter(data => data.hasOwnProperty('optionValue'))
+        //     if (commonMaster.length > 0) {
+        //       await this.sqliteService.insertAllMasterData(this.masterResponse.Setupmaster[masterKeys[i]], masterKeys[i]);
+        //     }
+        //   }
+        //   if (i == masterKeys.length - 1) {
+        //     this.navigateToDashboard();
+        //   }
+        // }
       }
     } else if (this.masterResponse.errorCode == "002") {
       // this.global.dismissLoading();
@@ -462,7 +471,7 @@ async fetchingMasters() {
 
   navigateToDashboard() {
     localStorage.setItem("personalgo", "true")
-    this.router.navigateByUrl('/personal')
+    this.router.navigateByUrl('/dashboard')
     
   }
 

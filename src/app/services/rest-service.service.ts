@@ -2,19 +2,63 @@ import { Injectable } from '@angular/core';
 import { GlobalService } from './global.service';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
+import { HelperFunctionService } from './helper-function.service';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RestServiceService {
-  private apiURL = 'http://172.30.1.116:9093/'
+  apiURL = environment.apiURL;
   constructor( 
     public httpAngular: HttpClient, 
-    public global: GlobalService
+    public global: GlobalService,
+    public helperFn: HelperFunctionService
   ) { }
 
-async angularHttpService(method, data) {
+
+  /**
+   * This method to handle API calls based on environment and network status.
+   * @param method API method name
+   * @param request Payload for the API
+   * @param isKarza Optional flag to determine specific endpoints
+   */
+  async restApiCall(
+    method: string,
+    request: any,
+    isKarza?: string,
+  ): Promise<any> {
+    try {
+      // if (await this.helperFn.getNetworkStatus()) {
+        if (environment.pointLocal && isKarza === 'Y') {
+          return this.handleLocalKarzaService();
+        } else {
+          return this.angularHttpService(method, request, isKarza);
+        }
+      // } else {
+      //   this.showNetworkAlert();
+      //   return Promise.reject('No Internet connection!');
+      // }
+    } catch (error) {
+      console.error(error, 'Error in restApiCallAngular');
+    }
+  }
+
+  /**
+   * Handles fetching local Karza service data.
+   */
+  handleLocalKarzaService(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.httpAngular
+        .get('assets/masters/karza.json', { responseType: 'json' })
+        .subscribe(
+          (response) => resolve(response),
+          (error) => reject(error),
+        );
+    });
+  }
+
+async angularHttpService(method, data, isKarza?: string) {
       let link;
       link = this.apiURL + `lendperfect/LOSMobileRestServices/${method}`;
 

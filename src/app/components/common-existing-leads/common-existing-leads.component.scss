@@ -1,0 +1,36 @@
+
+.h3Text,
+.centerDiv h2 {
+  color: gray;
+}
+
+.centerDiv {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.text-align {
+    color: #000000;
+}
+
+.text {
+    color: #000000;
+}
+
+p {
+    color: #000000;
+}
+
+label {
+    color: #000000;
+}
+
+.card {
+  border: 1px solid lightgray;
+  border-radius: 20px;
+  padding: 20px;
+  margin-top: 30px;
+}

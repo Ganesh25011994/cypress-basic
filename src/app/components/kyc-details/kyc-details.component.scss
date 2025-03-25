@@ -1,0 +1,27 @@
+.content {
+    height: 100%;
+    width: 100%;
+}
+
+
+.inputBoxArea {
+    position: relative;
+    margin-top: 10px;
+}
+
+select {
+    // width: 50px;
+    border: 0.5px solid lightgrey;
+    width: 98%;
+    height: 25px;
+    margin-top: 5px;
+    border-radius: 5px;
+}
+
+input {
+    border: 0.5px solid lightgrey;
+    width: 98%;
+    height: 25px;
+    margin-top: 5px;
+    border-radius: 5px;
+}

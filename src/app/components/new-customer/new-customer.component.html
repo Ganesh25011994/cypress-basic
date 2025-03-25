@@ -1,0 +1,70 @@
+<div>
+    <app-ujji-logo></app-ujji-logo>
+</div>
+
+<div class="content">
+    <div style="text-align: center;">
+        <h5>New Customer</h5>
+    </div>
+
+    <div>
+        <form [formGroup]="newCustomerForm" (ngSubmit)="validateNewCustomer(newCustomerForm.value)">
+            <div class="inputBoxArea">
+                <label>Customer Type</label>
+                <select id="custType" formControlName="custType">
+                    <option *ngFor="let value of customerTypes" [value]="value.CODE">{{value.NAME}}</option>
+                </select>
+                <div>
+                  <app-validation-error-messages
+                    [formData]="{'formName': newCustomerForm, 'fieldName': 'custType','validation_messages': validation_messages['custType'] }">
+                  </app-validation-error-messages>
+                </div>
+            </div>
+
+            <div class="inputBoxArea">
+                <label>ID PROOF</label>
+                <select id="idProof" formControlName="idProof" (change)="onIdProofChg($event)">
+                    <option *ngFor="let value of kycDocList" [value]="value.CODE">{{value.NAME}}</option>
+                </select>
+                <div>
+                  <app-validation-error-messages
+                    [formData]="{'formName': newCustomerForm, 'fieldName': 'idProof','validation_messages': validation_messages['idProof'] }">
+                  </app-validation-error-messages>
+                </div>
+            </div>
+
+            <div class="inputBoxArea" *ngIf="newCustomerForm.controls['idProof'].value === '1'">
+                <label>Aadhaar Method Type</label>
+                <select id="methodType" formControlName="methodType">
+                    <option *ngFor="let value of methodList" [value]="value.CODE">{{value.NAME}}</option>
+                </select>
+                <div>
+                  <app-validation-error-messages
+                    [formData]="{'formName': newCustomerForm, 'fieldName': 'methodType','validation_messages': validation_messages['methodType'] }">
+                  </app-validation-error-messages>
+                </div>
+            </div>
+
+            <div class="inputBoxArea">
+                <label>ID Value</label>
+                <input id="idValue" type="text" formControlName="idValue">
+                <div>
+                    <app-validation-error-messages
+                    [formData]="{'formName': newCustomerForm, 'fieldName': 'idValue','validation_messages': validation_messages['idValue'] }">
+                    </app-validation-error-messages>
+                </div>
+            </div>
+
+            <!-- <div class="btnHead" *ngIf="!uploadSuccess">
+                <button class="btn" id="save-button"  [disabled]="newCustomerForm.invalid" (click)="captureConsentForm()">
+                    Upload Consent Form</button>
+            </div> -->
+
+            <div class="btnHead" *ngIf="uploadSuccess">
+                <button class="btn" type="submit" [disabled]="newCustomerForm.invalid" id="submit-newbtn">Submit</button>
+            </div>
+        
+        </form>
+    </div>
+
+</div>

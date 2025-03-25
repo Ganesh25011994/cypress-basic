@@ -17,28 +17,28 @@ export class AppComponent {
     let logindata = localStorage.getItem('username')
     let personaldata = localStorage.getItem('personalgo')
 
-      if (logindata && this.router.url == '/') {
-        if (personaldata) {
-          this.router.navigate(['/personal'], {
-            skipLocationChange: true,
-            replaceUrl: true,
-          });
+      // if (logindata && this.router.url == '/') {
+      //   if (personaldata) {
+      //     this.router.navigate(['/personal'], {
+      //       skipLocationChange: true,
+      //       replaceUrl: true,
+      //     });
           
-        } else {
-          this.router.navigate(['/mpin'], {
-            skipLocationChange: true,
-            replaceUrl: true,
-          });
-        }
-        // this.router.navigateByUrl('mpin')
+      //   } else {
+      //     this.router.navigate(['/mpin'], {
+      //       skipLocationChange: true,
+      //       replaceUrl: true,
+      //     });
+      //   }
+      //   // this.router.navigateByUrl('mpin')
         
-      } else {
-        // this.router.navigateByUrl('login')
-        this.router.navigate(['/login'], {
-          skipLocationChange: true,
-          replaceUrl: true,
-        });
-      }
+      // } else {
+      //   // this.router.navigateByUrl('login')
+      //   this.router.navigate(['/login'], {
+      //     skipLocationChange: true,
+      //     replaceUrl: true,
+      //   });
+      // }
     
     
   }

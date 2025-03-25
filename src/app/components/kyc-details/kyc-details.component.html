@@ -1,0 +1,82 @@
+<div class="content">
+    <div style="text-align: center;">
+        <h2 class="title">KYC Details</h2>
+    </div>
+
+    <div>
+        <form [formGroup]="kycDetails" (ngSubmit)="kycDetailsSave(kycDetails.value)">
+            <div class="row g-6">
+                <div class="col-md-6">
+                    <div class="form-floating">
+                      <select class="form-select" id="idProof" formControlName="idProof" (change)="onDocListChg($event)">
+                          <option *ngFor="let value of kycDocsList" [value]="value.CODE">{{value.NAME}}</option>
+                      </select>
+                      <label>ID Proof</label>
+                    </div>
+                     
+                    <div class="text-danger small mt-1">
+                        <app-validation-error-messages
+                            [formData]="{'formName': kycDetails, 'fieldName': 'idProof','validation_messages': validation_messages['idProof'] }">
+                        </app-validation-error-messages>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-floating">
+                      <input class="form-control" id="idValue" type="text" formControlName="idValue">
+                      <label>ID Value</label>
+                    </div>
+                    <div class="text-danger small mt-1">
+                      <app-validation-error-messages
+                        [formData]="{'formName': kycDetails, 'fieldName': 'idValue','validation_messages': validation_messages['idValue'] }">
+                      </app-validation-error-messages>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-floating">
+                      <input class="form-control" id="fileNo" type="text" formControlName="fileNo">
+                      <label>File Number</label>
+                    </div>
+                    <div class="text-danger small mt-1">
+                      <app-validation-error-messages
+                        [formData]="{'formName': kycDetails, 'fieldName': 'fileNo','validation_messages': validation_messages['fileNo'] }">
+                      </app-validation-error-messages>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-floating">
+                      <input class="form-control" id="issueDate" type="date" formControlName="issueDate">
+                      <label>Issue Date</label>
+                    </div>
+                    <div class="text-danger small mt-1">
+                      <app-validation-error-messages
+                        [formData]="{'formName': kycDetails, 'fieldName': 'issueDate','validation_messages': validation_messages['issueDate'] }">
+                      </app-validation-error-messages>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-floating">
+                      <input class="form-control" id="expiryDate" type="date" formControlName="expiryDate">
+                      <label>Expiry Date</label>
+                    </div>
+                    <div class="text-danger small mt-1">
+                      <app-validation-error-messages
+                        [formData]="{'formName': kycDetails, 'fieldName': 'expiryDate','validation_messages': validation_messages['expiryDate'] }">
+                      </app-validation-error-messages>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 text-center mt-3">
+              <button type="submit" class="btn btn-primary w-50">
+                Save
+              </button>
+            </div>
+        </form>
+    </div>
+
+
+</div>

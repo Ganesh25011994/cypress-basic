@@ -1,0 +1,15 @@
+<div class="container mt-4">
+  <div class="nav nav-tabs d-flex flex-wrap justify-content-center">
+    <button 
+      *ngFor="let item of tabs; let i = index" 
+      (click)="selectTab(i)"
+      class="nav-link"
+      [ngClass]="{'active': selectedTab === i}">
+      {{ item.label }}
+    </button>
+  </div>    
+</div>
+  
+<div class="tab-content p-4 border rounded shadow-sm bg-white">
+  <ng-container *ngComponentOutlet="tabs[selectedTab]?.component"></ng-container>
+</div>

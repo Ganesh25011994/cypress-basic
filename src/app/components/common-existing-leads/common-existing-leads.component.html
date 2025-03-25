@@ -1,0 +1,53 @@
+<div class="height100vh" scrollEvents="true">
+    <div *ngIf="existingLeads.length === 0">
+      <div class="centerDiv">
+        <h2>
+          <div class="iconDiv">
+            <mat-icon class="iconsty" style="color: #3e8ce5db">list_alt</mat-icon>
+        </div>
+        </h2>
+        <h3 class="h3Text">No Records Found !</h3>
+      </div>
+    </div>
+</div>
+
+<div>
+    <div  *ngFor=" let lead of existingLeads" style="padding: 0">
+        <div class="card">
+            <div class="row">
+                <div class="col-6 columncard text-white">
+                    <div class="containerdiv1">
+                        <img src="assets/icon/person.svg" />
+                      </div>
+                      <div class="containerdiv2">
+                        <div class="text-align">{{ lead.lcdcustName }}</div>
+                        <div class="text">{{ lead.lcdLeadId }}</div>
+                      </div>
+                </div>
+
+                <div class="col-6 columncard text-white">
+                    <div class="statusdiv" *ngIf="showCredit || lead.lcdpropno">
+                    <button
+                      size="small"
+                      fill="outline"
+                      (click)="appstatus(lead)"
+                    >
+                      <mat-icon slot="start" name="refresh"></mat-icon>
+                      Status
+                    </button>
+                  </div>
+                </div>
+
+                <div class="col-6 columncard text-white">
+                    <p>{{ lead.lcdMobNo }}</p>
+                    <label>{{
+                        convertDate(lead.lcdcreatedon)
+                      }}</label>
+                    <!-- <p>lead.lcdBranchId | branch: organisationMaster</p> -->
+                    <p>{{ lead.lcdLoanAmt }}</p>
+                    <p *ngIf="lead.lcdpropno">{{ lead.lcdpropno }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

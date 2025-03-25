@@ -62,8 +62,8 @@ describe('Directly login with Mpin', () => {
         expect(finalResponse.map.errorCode).to.equals('000');
         cy.contains(`Welcome ${username}`)
       }
-    })
-  });
+      })
+    });
 
   
     it('login with mpin only', () => {

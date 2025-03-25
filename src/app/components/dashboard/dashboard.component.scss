@@ -1,0 +1,44 @@
+.columncard {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+  }
+
+.card {
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+    overflow: hidden;
+    position: relative;
+    height: 140px;
+    border-radius: 30px;
+    width: 140px;
+  }
+
+  .card-item {
+    align-items: center;
+    padding: 10px;
+  }
+
+  .posLabel {
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #229e82;
+  }
+
+  .iconDiv {
+    text-align: center;
+  }
+  .iconDiv mat-icon {
+    font-size: 30px;
+    align-items: center;
+    left: 65px;
+    text-align: center;
+    zoom: 2;
+  }
+
+  .icon-align {
+    color: #f78f35;
+  }

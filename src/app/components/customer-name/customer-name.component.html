@@ -1,0 +1,98 @@
+<div>
+    <app-ujji-logo></app-ujji-logo>
+</div>
+
+<div class="content">
+    <div class="header" *ngIf="idType === 'PAN' || idType === 'Aadhaar' || idType === 'voterId' || showNames">
+        <form [formGroup]="customerNamesForm" (ngSubmit)="submitCustomerNames(customerNamesForm.value)">
+            <div>
+                <div class="inputBoxArea">
+                    <label>First Name <span color="danger">*</span></label>
+                    <select id="firstName" formControlName="firstName">
+                        <option *ngFor="let value of custNameList" [value]="value.CODE">{{value.NAME}}</option>
+                    </select>
+                    <!-- <div>
+                      <app-validation-error-messages
+                        [formData]="{'formName': newCustomerForm, 'fieldName': 'firstName','validation_messages': validation_messages['firstName'] }">
+                      </app-validation-error-messages>
+                    </div> -->
+                </div>
+
+                <div class="inputBoxArea" *ngIf="this.custNameList.length > 2">
+                    <label>Middle Name <span color="danger">*</span></label>
+                    <select id="middleName" formControlName="middleName">
+                        <option *ngFor="let value of custNameList" [value]="value.CODE">{{value.NAME}}</option>
+                    </select>
+                    <!-- <div>
+                      <app-validation-error-messages
+                        [formData]="{'formName': newCustomerForm, 'fieldName': 'middleName','validation_messages': validation_messages['middleName'] }">
+                      </app-validation-error-messages>
+                    </div> -->
+                </div>
+
+                <div class="inputBoxArea" *ngIf="this.custNameList.length > 1">
+                    <label>Last Name <span color="danger">*</span></label>
+                    <select id="lastName" formControlName="lastName">
+                        <option *ngFor="let value of custNameList" [value]="value.CODE">{{value.NAME}}</option>
+                    </select>
+                    <!-- <div>
+                      <app-validation-error-messages
+                        [formData]="{'formName': newCustomerForm, 'fieldName': 'lastName','validation_messages': validation_messages['lastName'] }">
+                      </app-validation-error-messages>
+                    </div> -->
+                </div>
+            </div>
+
+            <div>
+                <button class="checkIn" type="submit" id="customerName-submit-btn" [disabled]="customerNamesForm.invalid">Click</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="header" *ngIf="enableDlForm">
+        <form [formGroup]="drivingLicenseForm" (ngSubmit)="validateDL(drivingLicenseForm.value)">
+            <div class="inputBoxArea">
+                <label>Enter Date of Birth as per Driving License</label>
+                <input id="dob" type="date" formControlName="dob" [max]="maxdate"
+                [min]="mindate">
+            </div>
+
+            <div>
+                <button type="submit"[disabled]="drivingLicenseForm.invalid">Click</button>
+            </div>
+            
+        </form>
+    </div>
+
+    <div class="header" *ngIf="enablePassportForm">
+        <form [formGroup]="passportForm" (ngSubmit)="validatePassport(passportForm.value)">
+            <div class="inputBoxArea">
+                <label>File Number</label>
+                <input id="fileNo" type="text" formControlName="fileNo" maxlength="30">
+
+                <div>
+                    <app-validation-error-messages
+                      [formData]="{'formName': passportForm, 'fieldName': 'fileNo','validation_messages': validation_messages['fileNo'] }"
+                    >
+                    </app-validation-error-messages>
+                  </div>
+            </div>
+
+            <div class="inputBoxArea">
+                <label>Enter Date of Birth as per Passport</label>
+                <input id="dob" type="date" formControlName="dob" maxlength="30">
+
+                <div>
+                    <app-validation-error-messages
+                      [formData]="{'formName': passportForm, 'fieldName': 'dob','validation_messages': validation_messages['dob'] }"
+                    >
+                    </app-validation-error-messages>
+                  </div>
+            </div>
+
+            <div>
+                <button type="submit" [disabled]="passportForm.invalid">Click</button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,50 @@
+.content {
+    height: 80%;
+    margin-top: 20%;
+    position: relative;
+}
+
+.inputBoxArea {
+    position: relative;
+    margin-top: 10px;
+}
+
+select {
+    // width: 50px;
+    border: 0.5px solid lightgrey;
+    width: 98%;
+    height: 25px;
+    margin-top: 5px;
+    border-radius: 5px;
+}
+
+input {
+    border: 0.5px solid lightgrey;
+    width: 98%;
+    height: 25px;
+    margin-top: 5px;
+    border-radius: 5px;
+}
+
+.checkIn {
+    width: 120px;
+    height: 40px;
+    border-radius: 21px;
+    --background: var(--UJ-color-primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    margin-top: 50px;
+  }
+  
+// .btnHead {
+//     text-align: center;
+// }
+
+// .btn {
+//     width: 60%;
+//     height: 30px;
+//     background: #61459e;
+//     color: #FFFFFF;
+// }
