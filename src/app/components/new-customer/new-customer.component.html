@@ -15,7 +15,7 @@
                     <option *ngFor="let value of customerTypes" [value]="value.CODE">{{value.NAME}}</option>
                 </select>
                 <div>
-                  <app-validation-error-messages
+                  <app-validation-error-messages class="errtext"
                     [formData]="{'formName': newCustomerForm, 'fieldName': 'custType','validation_messages': validation_messages['custType'] }">
                   </app-validation-error-messages>
                 </div>
@@ -27,7 +27,7 @@
                     <option *ngFor="let value of kycDocList" [value]="value.CODE">{{value.NAME}}</option>
                 </select>
                 <div>
-                  <app-validation-error-messages
+                  <app-validation-error-messages class="errtext" cl
                     [formData]="{'formName': newCustomerForm, 'fieldName': 'idProof','validation_messages': validation_messages['idProof'] }">
                   </app-validation-error-messages>
                 </div>
@@ -39,7 +39,7 @@
                     <option *ngFor="let value of methodList" [value]="value.CODE">{{value.NAME}}</option>
                 </select>
                 <div>
-                  <app-validation-error-messages
+                  <app-validation-error-messages class="errtext"
                     [formData]="{'formName': newCustomerForm, 'fieldName': 'methodType','validation_messages': validation_messages['methodType'] }">
                   </app-validation-error-messages>
                 </div>
@@ -49,7 +49,7 @@
                 <label>ID Value</label>
                 <input id="idValue" type="text" formControlName="idValue">
                 <div>
-                    <app-validation-error-messages
+                    <app-validation-error-messages class="errtext"
                     [formData]="{'formName': newCustomerForm, 'fieldName': 'idValue','validation_messages': validation_messages['idValue'] }">
                     </app-validation-error-messages>
                 </div>

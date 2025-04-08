@@ -1,4 +1,4 @@
-<div class="height100vh" scrollEvents="true">
+<!-- <div class="height100vh" scrollEvents="true">
     <div *ngIf="existingLeads.length === 0">
       <div class="centerDiv">
         <h2>
@@ -9,10 +9,66 @@
         <h3 class="h3Text">No Records Found !</h3>
       </div>
     </div>
-</div>
+</div> -->
 
 <div>
-    <div  *ngFor=" let lead of existingLeads" style="padding: 0">
+    <div class="row">
+      <div id="card" class="col-4 cardsty" *ngFor=" let lead of existingLeads" (click)="openExistingLeads(lead)">
+        <div style="display: flex; margin-top: 10px;">
+            <div style="width: 70%; display: flex; align-items: center;">
+              <mat-icon>person</mat-icon>
+              <div style="padding-left: 7px;">
+                <p style="margin: 0px;">{{ lead.lcdcustName }}</p>
+                <label style="font-weight: bold;">{{ lead.lcdLeadId }}</label>
+              </div>
+            </div>
+
+            <div style="width: 30%;margin-top: 10px; background: #f1c74c;
+              display: flex;align-items: center;padding: 3px;border-radius: 10px;">
+              <mat-icon>refresh</mat-icon>
+              <label style="position: absolute; padding-left: 30px;">Status</label>
+            </div>
+        </div>
+
+        <div style="display: flex; margin-top: 10px;">
+          <div style="width: 50%; display: flex; align-items: center;">
+            <div style="padding-left: 7px;">
+              <div style="display: flex;">
+                <mat-icon style="font-size: 15px; align-items: center; display: flex;"> local_phone</mat-icon>
+                <label style="font-weight: bold; padding-left: 5px;">{{ lead.lcdMobNo }}</label>
+              </div>
+              
+              <div style="display: flex;">
+                <mat-icon style="font-size: 15px; align-items: center; display: flex;">date_range</mat-icon>
+                <label style="font-weight: bold; padding-left: 5px;">{{ convertDate(lead.lcdcreatedon) }}</label>
+              </div>
+              
+            </div>
+          </div>
+
+          <div style="width: 50%; align-items: center;">
+            <div style="padding-left: 7px; display: flex;">
+              <mat-icon style="font-size: 15px; align-items: center; display: flex;">location_on</mat-icon>
+              <label style="font-weight: bold; padding-left: 5px;">176757894677</label>
+            </div>
+
+            <div style="padding-left: 7px; display: flex;">
+              <mat-icon style="font-size: 15px; align-items: center; display: flex; color: darkgreen;">money</mat-icon>
+              <label style="font-weight: bold; padding-left: 5px;">{{ lead.lcdLoanAmt }}</label>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- <div style="margin-top: 5px;">
+          <mat-progress-bar mode="buffer" [value]="progress" [bufferValue]="buffer" color="black"></mat-progress-bar>
+        </div> -->
+        
+
+      </div>
+    </div>
+
+    <!-- <div  *ngFor=" let lead of existingLeads" style="padding: 0">
         <div class="card">
             <div class="row">
                 <div class="col-6 columncard text-white">
@@ -43,11 +99,11 @@
                     <label>{{
                         convertDate(lead.lcdcreatedon)
                       }}</label>
-                    <!-- <p>lead.lcdBranchId | branch: organisationMaster</p> -->
+                    <p>lead.lcdBranchId | branch: organisationMaster</p>
                     <p>{{ lead.lcdLoanAmt }}</p>
                     <p *ngIf="lead.lcdpropno">{{ lead.lcdpropno }}</p>
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 </div>

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
 import { SharedModule } from '../../modules/sharedModule/shared-module';
@@ -12,6 +12,8 @@ import { SharedModule } from '../../modules/sharedModule/shared-module';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
+
+ @Input() pagename: string;
 
   toggleMenu() {
     console.log('Menu clicked');

@@ -220,7 +220,7 @@ export class FormControlService {
       ],
       permState: ['', Validators.required],
       permCity: ['', Validators.required],
-      permPincode: ['', Validators.compose([Validators.required])],
+      permPincode: ['', Validators.compose([Validators.required, Validators.pattern('[0-9]*')])],
       permAddrType: [''],
     });
   }
@@ -253,7 +253,7 @@ export class FormControlService {
           Validators.pattern('[a-zA-Z0-9 ]*'),
         ]),
       ],
-      prePincode: ['', Validators.required],
+      prePincode: ['', Validators.required, Validators.pattern('[0-9]*')],
       preState: ['', Validators.required],
       preCity: ['', Validators.required],
       preLandMark: [

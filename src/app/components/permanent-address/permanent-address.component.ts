@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../../modules/sharedModule/shared-module';
 import { FormControlService } from '../../services/form-control.service';
@@ -11,7 +11,7 @@ import { MatIconModule } from '@angular/material/icon';
 @Component({
   selector: 'app-permanent-address',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, SharedModule, MatIconModule],
+  imports: [CommonModule, MatIconModule, FormsModule, ReactiveFormsModule, SharedModule ],
   templateUrl: './permanent-address.component.html',
   styleUrl: './permanent-address.component.scss'
 })
@@ -19,7 +19,7 @@ export class PermanentAddressComponent {
   permanentAddressDetails: FormGroup;
   validation_messages: { [key: string]: any };
 
-  kycDocsListPermanent:any[] | undefined = [];
+  kycDocsListPermanent:any[] | undefined = [] = []
 
   permstates:any[] = [];
   permcityList:any[] = [];
@@ -35,7 +35,8 @@ export class PermanentAddressComponent {
   pincodeAvail: boolean = false;
 
   constructor(public formControlService: FormControlService, public errorMessages: ErrorMessages,
-    public sharedFunction: SharedFunctionService, public formValidation: FormValidationsService
+    public sharedFunction: SharedFunctionService, public formValidation: FormValidationsService,
+    private ref: ChangeDetectorRef
   ) {
 
   }
@@ -43,6 +44,24 @@ export class PermanentAddressComponent {
   ngOnInit() {
     this.permanentAddressDetails = this.formControlService.permanentAddressLeadForm();
     this.validation_messages = this.errorMessages.permanentAddressLeadErrorMsg();
+    let master: any = localStorage.getItem('MasterResponse')
+    this.kycDocsListPermanent = JSON.parse(master).Setupmaster.Idproof
+    if (this.kycDocsListPermanent) {
+      this.kycDocsListPermanent.forEach((user: any) => {
+        for (const key of Object.keys(user)) {
+          if (key.includes('optionDesc')) {
+            user[key.replace('optionDesc','NAME')] = user[key];
+            delete user[key];
+          } else {
+            user[key.replace('optionValue','CODE')] = user[key];
+            delete user[key];
+          }
+        }
+      })
+    }
+    console.log("kycDocsListPermanent", this.kycDocsListPermanent)
+    
+    this.ref.detectChanges()
   }
 
   async setKycAddedList() {
@@ -52,6 +71,10 @@ export class PermanentAddressComponent {
     } catch (error) {
       console.log(error, 'PermanentAddressDetailsComponent-savePermanentAddress');
     }
+  }
+
+  doccol(event) {
+    console.log("doccol", event)
   }
 
    /**

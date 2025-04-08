@@ -1,0 +1,12 @@
+<div class="webcam-container">
+    <webcam [trigger]="triggerObservable" (imageCapture)="handleImage($event)"></webcam>
+    
+    <button (click)="triggerSnapshot()">Capture Photo</button>
+
+    <!-- <input type="file" placeholder="Capture File"> -->
+    
+    <div *ngIf="webcamImage">
+      <h3>Captured Image:</h3>
+      <img [src]="webcamImage.imageAsDataUrl" />
+    </div>
+</div>

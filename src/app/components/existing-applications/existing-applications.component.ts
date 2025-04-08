@@ -21,6 +21,8 @@ export class ExistingApplicationsComponent {
   existingLeads: any[] = [];
   backupAppList = [];
 
+  pagename: string = 'Existing Application'
+
   constructor(public helperFn: HelperFunctionService, public frameRequest: FrameRequestsService,
     public rest: RestServiceService, public dataUtility: DataUtilityService, public customAlert: CustomAlertService,
     public alertErrorLabel: AlertErrorLabel,     public ref: ChangeDetectorRef

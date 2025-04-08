@@ -1,4 +1,4 @@
-
+@import "@angular/material/prebuilt-themes/indigo-pink.css";
 .h3Text,
 .centerDiv h2 {
   color: gray;
@@ -33,4 +33,31 @@ label {
   border-radius: 20px;
   padding: 20px;
   margin-top: 30px;
+}
+
+.cardsty {
+  // background: #fdde67;
+  border: 1px solid lightgray;
+  height: 150px;
+  width: 300px;
+  margin: 15px;
+  border-radius: 25px;
+  font-size: 14px;
+  box-shadow: 3px 3px 10px -5px rgba(0, 0, 0, 1), -3px 3px 10px -5px rgba(0,0,0,1);;
+}
+
+.card {
+  border-radius: 10px;
+  text-align: center;
+}
+
+.icon {
+  font-size: 1.2rem;
+  color: #007bff;
+  margin-right: 5px;
+}
+
+span {
+  font-weight: 500;
+  font-size: 1rem;
 }

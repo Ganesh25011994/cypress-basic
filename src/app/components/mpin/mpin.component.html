@@ -1,90 +1,104 @@
 <app-loader [isLoading]="loading"></app-loader>
 <div *ngIf="showMpin || !loading">
-    <div class="loginCardMpin" *ngIf="!showSetPin">
-      <div style="height: 6px; background-color:#FCB53E;"></div>
-      <div style="width: 90%;margin: 10px auto 0px auto;">
-        <div style="font-size: 18px;text-align: center;color: #229E82;">Welcome {{username}}!
-        </div>
+  <div style="width: 100vw; height: 100vh;background: linear-gradient(10deg,#004780 0%, #0181e5 50%, #0076d6 80%);">
+    <div style="position: absolute; left: 10%; width: 80%; top: 15%; height: 70%;display: flex;">
+      <div style="height: 100%; width: 50%;">
+  
       </div>
-      <p style="margin-top: 0px;text-align: center; color: #229E82;">Please enter the MPIN here.</p>
-      <div class="grid-container">
-        <div class="grid-item">
-          <div class="box">
-            <input class="x" id="otp1" type="tel" numberonly #otp1 maxLength="1" [(ngModel)]="mPinDigits.first"
-            (keyup)="otpController($event,otp2,'')"/>
+      <div style="height: 100%; width: 50%;">
+        <div style="height: 90%; width: 80%; background: #FFFFFF; margin-left: 10%; margin-top: 5%;">
+          <div class="loginCardMpin" *ngIf="!showSetPin">
+            <div style="height: 6px; background-color:#FCB53E;"></div>
+            <div style="width: 90%;margin: 10px auto 0px auto;">
+              <div style="font-size: 18px;text-align: center;color: #229E82;">Welcome {{username}}!
+              </div>
+            </div>
+            <p style="margin-top: 0px;text-align: center; color: #229E82;">Please enter the MPIN here.</p>
+            <div class="grid-container">
+              <div class="grid-item">
+                <div class="box">
+                  <input class="x" id="otp1" type="tel" numberonly #otp1 maxLength="1" [(ngModel)]="mPinDigits.first"
+                  (keyup)="otpController($event,otp2,'')"/>
+                </div>
+              </div>
+              <div class="grid-item">
+                <div class="box">
+                  <input class="x" id="otp2" type="tel" numberonly #otp2 maxLength="1" [(ngModel)]="mPinDigits.second"
+                  (keyup)="otpController($event,otp3,otp1)"/>
+                </div>
+              </div>
+              <div class="grid-item">
+                <div class="box">
+                  <input class="x" id="otp3" type="tel" numberonly #otp3 maxLength="1" [(ngModel)]="mPinDigits.third"
+                  (keyup)="otpController($event,otp4,otp2)"/>
+                </div>
+              </div>
+              <div class="grid-item">
+                <div class="box">
+                  <input class="x" id="otp4" type="tel" numberonly #otp4 maxLength="1" [(ngModel)]="mPinDigits.four"
+                  (keyup)="otpController($event,otp5,otp3)"/>
+                </div>
+              </div>
+            </div>
+        
+            <div class="btnHeadMpin">
+              <button class="btn" type="submit" id="mpinSubmit-btn" [disabled]="disableMpinBtn"
+                (click)="pinLogin()">Login</button>
+            </div>
+        
+            <!-- <div class="pinset">
+              <ion-row>
+                <ion-col col-6>
+                  <h3 text-center class="forgot" (click)="resetPin()">Reset MPIN!</h3>
+                </ion-col>
+                <ion-col col-6>
+                  <h3 text-center class="forgot" (click)="resetPin()">Forgot MPIN?</h3>
+                </ion-col>
+              </ion-row>
+            </div> -->
+          </div>
+        
+          <div class="loginCard" *ngIf="showSetPin">
+            <div style="height: 6px; background-color:#FCB53E;"></div>
+            <div style="width: 90%;margin: 10px auto 0px auto;">
+              <div style="font-size: 18px;text-align: center;color: #229E82;">Welcome {{username}}!!
+              </div>
+            </div>
+            <form [formGroup]="setMpinForm" style="margin-top: 15px;" (ngSubmit)="setMpinValues(setMpinForm.value)">
+              <div class="logDetailsPin">
+                <div class="logItem" lines="none">
+                  <img src="../../../assets/icon/locked-padlock.svg" slot="end">
+                  <input class="logInput" type="tel" maxlength="4" class="hideAadharKey" placeholder="set new 4 digit MPIN" formControlName="pina"
+                    />
+                </div>
+                <div>
+                  <app-validation-error-messages
+                    [formData]="{'formName': setMpinForm, 'fieldName': 'pina','validation_messages': validation_messages['pina'] }">
+                  </app-validation-error-messages>
+                </div>
+              </div>
+              <div class="logDetailsPin">
+                <div class="logItem" style="margin-top: 30px;" lines="none">
+                  <img src="../../../assets/icon/locked-padlock.svg" slot="end">
+                  <input class="logInput" type="tel" maxlength="4" class="hideAadharKey" placeholder="Confirm 4 digit MPIN"
+                    formControlName="pinb" />
+                </div>
+                <div>
+                  <app-validation-error-messages
+                    [formData]="{'formName': setMpinForm, 'fieldName': 'pinb','validation_messages': validation_messages['pinb'] }">
+                  </app-validation-error-messages>
+                </div>
+              </div>
+              <div class="btnHead">
+                <button class="btn" type="submit" [disabled]="setMpinForm.invalid">CREATE</button>
+              </div>
+            </form>
           </div>
         </div>
-        <div class="grid-item">
-          <div class="box">
-            <input class="x" id="otp2" type="tel" numberonly #otp2 maxLength="1" [(ngModel)]="mPinDigits.second"
-            (keyup)="otpController($event,otp3,otp1)"/>
-          </div>
-        </div>
-        <div class="grid-item">
-          <div class="box">
-            <input class="x" id="otp3" type="tel" numberonly #otp3 maxLength="1" [(ngModel)]="mPinDigits.third"
-            (keyup)="otpController($event,otp4,otp2)"/>
-          </div>
-        </div>
-        <div class="grid-item">
-          <div class="box">
-            <input class="x" id="otp4" type="tel" numberonly #otp4 maxLength="1" [(ngModel)]="mPinDigits.four"
-            (keyup)="otpController($event,otp5,otp3)"/>
-          </div>
-        </div>
+    
       </div>
-
-      <div class="btnHeadMpin">
-        <button class="btn" type="submit" [disabled]="disableMpinBtn"
-          (click)="pinLogin()">Login</button>
-      </div>
-
-      <!-- <div class="pinset">
-        <ion-row>
-          <ion-col col-6>
-            <h3 text-center class="forgot" (click)="resetPin()">Reset MPIN!</h3>
-          </ion-col>
-          <ion-col col-6>
-            <h3 text-center class="forgot" (click)="resetPin()">Forgot MPIN?</h3>
-          </ion-col>
-        </ion-row>
-      </div> -->
     </div>
-
-    <div class="loginCard" *ngIf="showSetPin">
-      <div style="height: 6px; background-color:#FCB53E;"></div>
-      <div style="width: 90%;margin: 10px auto 0px auto;">
-        <div style="font-size: 18px;text-align: center;color: #229E82;">Welcome {{username}}!!
-        </div>
-      </div>
-      <form [formGroup]="setMpinForm" style="margin-top: 15px;" (ngSubmit)="setMpinValues(setMpinForm.value)">
-        <div class="logDetailsPin">
-          <div class="logItem" lines="none">
-            <img src="../../../assets/icon/locked-padlock.svg" slot="end">
-            <input class="logInput" type="tel" maxlength="4" class="hideAadharKey" placeholder="set new 4 digit MPIN" formControlName="pina"
-              />
-          </div>
-          <div>
-            <app-validation-error-messages
-              [formData]="{'formName': setMpinForm, 'fieldName': 'pina','validation_messages': validation_messages['pina'] }">
-            </app-validation-error-messages>
-          </div>
-        </div>
-        <div class="logDetailsPin">
-          <div class="logItem" style="margin-top: 30px;" lines="none">
-            <img src="../../../assets/icon/locked-padlock.svg" slot="end">
-            <input class="logInput" type="tel" maxlength="4" class="hideAadharKey" placeholder="Confirm 4 digit MPIN"
-              formControlName="pinb" />
-          </div>
-          <div>
-            <app-validation-error-messages
-              [formData]="{'formName': setMpinForm, 'fieldName': 'pinb','validation_messages': validation_messages['pinb'] }">
-            </app-validation-error-messages>
-          </div>
-        </div>
-        <div class="btnHead">
-          <button class="btn" type="submit" [disabled]="setMpinForm.invalid">CREATE</button>
-        </div>
-      </form>
-    </div>
+    
   </div>
+</div>
+

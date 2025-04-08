@@ -376,7 +376,7 @@ export class ErrorMessages {
           type: 'required',
           message: `Enter Permanent Address Line 3`,
         },
-        { type: 'maxlength', message: 'Maximum 40 Charactes only allowed' },
+        { type: 'maxlength', message: 'Maximum 40 characters only allowed' },
         { type: 'pattern', message: `Special character are not allowed` },
       ],
       permLandMark: [
@@ -406,6 +406,10 @@ export class ErrorMessages {
         {
           type: 'required',
           message: `Enter Permanent Address Pincode`,
+        },
+        {
+          type: 'pattern',
+          message: `Numbers only allowed`,
         },
         { type: 'maxlength', message: 'Maximum 6 Numbers only allowed' },
         { type: 'minlength', message: 'Minimum 6 Numbers required' },

@@ -30,7 +30,7 @@ export class AppLabelNames {
               {
                 // logo: 'CreateReviewIMG',
                 label: 'CreateReview',
-                // path: '/credit-review',
+                path: '/credit-review',
                 name: 'search',
               },
               {

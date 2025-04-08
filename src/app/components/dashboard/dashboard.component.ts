@@ -18,6 +18,8 @@ import { DataUtilityService } from '../../services/data-utility.service';
 
 export class DashboardComponent implements OnInit {
   textData: any;
+
+  pagename: string = "DashBoard"
   constructor(public sqliteService: SqliteService, public labelName: AppLabelNames, public router: Router,
     public dataUtility: DataUtilityService
   ) {

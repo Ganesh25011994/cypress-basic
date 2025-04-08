@@ -41,9 +41,9 @@
    -->
 
 <div>
-    <app-header></app-header>
+    <app-header [pagename]="pagename"></app-header>
     <div>
-      <input matInput type="search" placeholder="Search" (input)="handleInput($event)">
+      <input matInput type="search" id="search-application" placeholder="Search" (input)="handleInput($event)">
       <button matSuffix mat-icon-button aria-label="Search">
         <mat-icon>search</mat-icon>
       </button>

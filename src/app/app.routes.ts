@@ -9,6 +9,7 @@ import { NewCustomerComponent } from './components/new-customer/new-customer.com
 import { CoreTabsComponent } from './components/core-tabs/core-tabs.component';
 import { CustomerNameComponent } from './components/customer-name/customer-name.component';
 import { ExistingApplicationsComponent } from './components/existing-applications/existing-applications.component';
+import { CreditReviewComponent } from './components/credit-review/credit-review.component';
 export const routes: Routes = [
     {
         path: '',
@@ -50,6 +51,10 @@ export const routes: Routes = [
       {
         path: 'existing-applications',
         component: ExistingApplicationsComponent
+      },
+      {
+        path: 'credit-review',
+        component: CreditReviewComponent
       }
       
 ];

@@ -15,6 +15,8 @@ import { UjjiLogoComponent } from './components/ujji-logo/ujji-logo.component';
 import { IonicModule } from '@ionic/angular';
 import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
+import { WebcamModule } from 'ngx-webcam';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,6 +36,7 @@ import { MatOptionModule } from '@angular/material/core';
     MatIconModule,
     MatSelectModule,
     MatOptionModule,
+    WebcamModule,
     IonicModule.forRoot(),
     
   ],

@@ -8,12 +8,12 @@
       <div class="row g-6">
         <div class="col-md-6">
           <div class="form-floating">
-            <select class="form-select" id="documentCollectedForPermanentAddress" formControlName="documentCollectedForPermanentAddress">
-                <option *ngFor="let value of kycDocsListPermanent" [value]="value.CODE">{{value.NAME}}</option>
+            <select class="form-select" id="documentCollectedForPermanentAddress" formControlName="documentCollectedForPermanentAddress" (change)="doccol($event)">
+                <option *ngFor="let value of kycDocsListPermanent" [ngValue]="value.CODE">{{value.NAME}}</option>
             </select>
             <label>Document collected for Permanent Address</label>
           </div>
-          <div class="text-danger small mt-1">
+          <div class="text-danger small mt-1" id="documentCollectederror">
             <app-validation-error-messages
               [formData]="{'formName': permanentAddressDetails, 'fieldName': 'documentCollectedForPermanentAddress','validation_messages': validation_messages['documentCollectedForPermanentAddress'] }">
             </app-validation-error-messages>
@@ -25,7 +25,7 @@
             <input class="form-control" id="permAddress1" type="text" formControlName="permAddress1">
             <label>Address 1</label>
           </div>
-          <div class="text-danger small mt-1">
+          <div class="text-danger small mt-1" id="permAddress1error">
             <app-validation-error-messages
               [formData]="{'formName': permanentAddressDetails, 'fieldName': 'permAddress1','validation_messages': validation_messages['permAddress1'] }">
             </app-validation-error-messages>
@@ -37,7 +37,7 @@
             <input class="form-control" id="permAddress2" type="text" formControlName="permAddress2">
             <label>Address 2</label>
           </div>
-          <div class="text-danger small mt-1">
+          <div class="text-danger small mt-1" id="permAddress2error">
             <app-validation-error-messages
               [formData]="{'formName': permanentAddressDetails, 'fieldName': 'permAddress2','validation_messages': validation_messages['permAddress2'] }">
             </app-validation-error-messages>
@@ -49,7 +49,7 @@
             <input class="form-control" id="permAddress3" type="text" formControlName="permAddress3">
             <label>Address 3</label>
           </div>
-          <div class="text-danger small mt-1">
+          <div class="text-danger small mt-1" id="permAddress3error">
             <app-validation-error-messages
               [formData]="{'formName': permanentAddressDetails, 'fieldName': 'permAddress3','validation_messages': validation_messages['permAddress3'] }">
             </app-validation-error-messages>
@@ -63,13 +63,14 @@
               <label>Pincode</label>
             </div>
             <button
+              id="permPinvfyBtn"
               class="btn btn-primary d-flex align-items-center" 
               *ngIf="!permPincodeVerify"
               (click)="verifyPermPincode()">
               <mat-icon class="me-1">search</mat-icon>
             </button>
           </div>
-          <div class="text-danger small mt-1">
+          <div class="text-danger small mt-1" id="permPincodeerror">
             <app-validation-error-messages
               [formData]="{'formName': permanentAddressDetails, 'fieldName': 'permPincode','validation_messages': validation_messages['permPincode'] }">
             </app-validation-error-messages>
@@ -83,7 +84,7 @@
             </select>
             <label>State</label>
           </div>
-          <div class="text-danger small mt-1">
+          <div class="text-danger small mt-1" id="permstateerror">
             <app-validation-error-messages
               [formData]="{'formName': permanentAddressDetails, 'fieldName': 'permState','validation_messages': validation_messages['permState'] }">
             </app-validation-error-messages>
@@ -92,14 +93,14 @@
 
         <div class="col-md-6">
           <div class="form-floating">
-            <select class="form-select" id="permcity" formControlName="permcity">
+            <select class="form-select" id="permcity" formControlName="permCity">
               <option *ngFor="let value of permcityList" [value]="value.cityCode">{{value.cityName}}</option>
             </select>
             <label>City</label>
           </div>
-          <div class="text-danger small mt-1">
+          <div class="text-danger small mt-1" id="permcityerror">
             <app-validation-error-messages
-              [formData]="{'formName': permanentAddressDetails, 'fieldName': 'permcity','validation_messages': validation_messages['permcity'] }">
+              [formData]="{'formName': permanentAddressDetails, 'fieldName': 'permCity','validation_messages': validation_messages['permCity'] }">
             </app-validation-error-messages>
           </div>
         </div>
@@ -109,7 +110,7 @@
             <input class="form-control" id="permLandMark" type="text" formControlName="permLandMark">
             <label>LandMark</label>
           </div>
-          <div class="text-danger small mt-1">
+          <div class="text-danger small mt-1" id="permLandmarkerror">
             <app-validation-error-messages
               [formData]="{'formName': permanentAddressDetails, 'fieldName': 'permLandMark','validation_messages': validation_messages['permLandMark'] }">
             </app-validation-error-messages>
@@ -117,7 +118,11 @@
         </div>
 
         <div class="col-12 text-center mt-3">
-          <button type="submit" class="btn btn-primary w-50" [disabled]="permanentAddressDetails.invalid">
+          <!-- <button type="submit" class="btn btn-primary w-50" [disabled]="permanentAddressDetails.invalid">
+            Submit
+          </button> -->
+
+          <button type="submit"  id="btn-submit-permAddress" class="btn btn-primary w-50">
             Submit
           </button>
         </div>

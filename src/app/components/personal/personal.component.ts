@@ -553,7 +553,7 @@ export class PersonalComponent {
         "borrowerType": "B",
         "branchID": "469",
         "custName": custname,
-        "jsonData": JSON.stringify(this.personalDetails.value),
+        "jsonData": JSON.stringify(value),
         "leadID": leadID,
         "loanAmt": this.personalDetails.controls['loanRequested'].value,
         "mobNo": this.personalDetails.controls['mobileNo'].value,
@@ -735,6 +735,11 @@ export class PersonalComponent {
         // this.occupationSubcategoryList = this.occupationSubcategoryList.sort(
         //   (a, b) => a.Description.localeCompare(b.Description),
         // );
+        this.occupationsubList =
+          this.fullMasterData.OccupationCategory.filter(val => val.Level =="2" && val.ParentLink == personalDetails.occupationMainCategory && val.BizVertival == "16")
+          this.occupationsubList = this.occupationsubList.sort(
+            (a: any, b: any) => a.Description.localeCompare(b.Description),
+          );
         this.personalDetails.controls['occupationSubcategory'].setValue(
           personalDetails.occupationSubcategory,
         );
@@ -746,12 +751,15 @@ export class PersonalComponent {
         //     '3',
         //     personalDetails.occupationSubcategory,
         //   );
-        // this.personalDetails.controls['occupation'].setValue(
-        //   personalDetails.occupation ? personalDetails.occupation : '',
-        // );
-        // this.personalDetails.controls[
-        //   'occupation'
-        // ].updateValueAndValidity();
+        
+        this.occupationList =
+          this.fullMasterData.OccupationCategory.filter(val => val.Level == "3" && val.ParentLink == personalDetails.occupationSubcategory && val.BizVertival == "16")
+        this.personalDetails.controls['occupation'].setValue(
+          personalDetails.occupation ? personalDetails.occupation : '',
+        );
+        this.personalDetails.controls[
+          'occupation'
+        ].updateValueAndValidity();
         this.mobNumVerify = true;
         // if (this.personalDetails.controls['cifId'].value) {
         //   this.extCustomer = false;

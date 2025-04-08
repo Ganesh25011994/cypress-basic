@@ -47,7 +47,7 @@ describe('Personal Details Page Fill', () =>{
       cy.get('#firstName').type('Gan3747', {delay: 100})
       cy.contains('Enter Valid FirstName')
       cy.get('#firstName').clear()
-      cy.get('#firstName').type('aljsaslkhdalksdalkshdlkasdlkasdkjaskdjalksjd', {delay: 50})
+      cy.get('#firstName').type('aljsaslkhdalksdalk', {delay: 50})
       cy.contains('Maximum 40 Charactes only allowed')
       cy.get('#firstName').clear()
       cy.get('#firstName').type("Ramesh")

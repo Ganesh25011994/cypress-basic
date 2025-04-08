@@ -8,12 +8,12 @@
   .grid-item {
     flex: 1 1 100%; /* Default to full width (100%) */;
     padding: 16px;
-    width: 25%;
+    width: 20%;
   }
   
   .box {
     // background-color: lightblue;
-    padding: 20px;
+    padding: 15px;
     text-align: center;
     // border: 1px solid #ddd;
     height: 100px; /* You can adjust the height as needed */
@@ -43,6 +43,6 @@
   .btn {
     width: 60%;
     height: 30px;
-    background: #61459e;
+    background: #004780;
     color: #FFFFFF;
   }

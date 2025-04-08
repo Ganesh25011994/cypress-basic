@@ -29,6 +29,7 @@ export default defineConfig({
       require('cypress-mochawesome-reporter/plugin')(on); // Its convert Test Coverage Report into Single HTML File
 
       // Convert Excel File into JSON File
+      
       on("task", {
         excelToJsonConverter(filePath) {
           const result = excelToJson({
@@ -37,17 +38,6 @@ export default defineConfig({
           return result;
         }
       })
-    },
-
-    // setupNodeEvents(on, config) {
-    //   on('task', {
-    //     readExcel({ filePath, sheetName }) {
-    //       const absolutePath = path.resolve(filePath);
-    //       const workbook = xlsx.readFile(absolutePath);
-    //       const sheet = workbook.Sheets[sheetName];
-    //       return xlsx.utils.sheet_to_json(sheet); // Converts sheet data to JSON
-    //     }
-    //   });
-    // },
+    }
   },
 });

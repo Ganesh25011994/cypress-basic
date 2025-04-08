@@ -1,6 +1,6 @@
 .content {
-    height: 80%;
-    margin-top: 20%;
+    height: 90%;
+    margin-top: 10%;
     position: relative;
 }
 
@@ -9,21 +9,31 @@
     margin-top: 10px;
 }
 
+label {
+    display: block !important;
+    position: relative;
+    left: 5%;
+}
+
 select {
     // width: 50px;
     border: 0.5px solid lightgrey;
-    width: 98%;
+    width: 90%;
     height: 25px;
     margin-top: 5px;
     border-radius: 5px;
+    position: relative;
+    left: 5%;
 }
 
 input {
     border: 0.5px solid lightgrey;
-    width: 98%;
+    width: 90%;
     height: 25px;
     margin-top: 5px;
     border-radius: 5px;
+    position: relative;
+    left: 5%;
 }
 
 .checkIn {

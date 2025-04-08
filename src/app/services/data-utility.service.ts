@@ -24,6 +24,8 @@ export class DataUtilityService {
   presentAddressDetails: any;
   posidexDetails: any;
   savedPagesList: string[] = [];
+  loanAmountValue: any;
+  bureauAssetFlag: any;
   posidexCompleted = false;
   existingLeads: any = [];
   submitDisable: boolean;
@@ -160,6 +162,22 @@ export class DataUtilityService {
 
   getSavedPagesList(): string[] {
     return this.savedPagesList;
+  }
+
+  setLoanAmount(value: any) {
+    this.loanAmountValue = value
+  }
+
+  getLoanAmount() {
+    return this.loanAmountValue;
+  }
+
+  setAssetFlag(value: any) {
+    this.bureauAssetFlag = value
+  }
+
+  getAssetFlag() {
+    return this.bureauAssetFlag;
   }
 
   setPosidexCompleted(value) {
